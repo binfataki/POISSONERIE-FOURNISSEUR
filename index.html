@@ -453,7 +453,7 @@
   // ------------------------------------------------------------------
   // Configuration
   // ------------------------------------------------------------------
-  var DEFAULT_API_URL = "https://script.google.com/macros/s/AKfycbz5IOIjSV8gccr8VrWVsAr7zGxpL40y66E2vqXOxJqqf8luBe_RFgoKAPlMMxwgZDWftA/exec";
+  var DEFAULT_API_URL = "https://script.google.com/macros/s/AKfycbz8UUV3W_MPOHDPKnplotVXoTpCgfVNjGK8ZixYtuSkqpaf3n2zPQmHrko_1pk-LOmxjw/exec";
   var LS_API_URL   = "pde_supplier_api_url_v1";
   var LS_SESSION   = "pde_supplier_session_v1";
   var LS_DATA_PRE  = "pde_supplier_data_v1_";
@@ -464,7 +464,19 @@
   function $(sel){ return document.querySelector(sel); }
   function $all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
-  function apiUrl(){ return localStorage.getItem(LS_API_URL) || DEFAULT_API_URL; }
+  function apiUrl(){
+    var saved = localStorage.getItem(LS_API_URL) || '';
+    var oldDeployments = [
+      'https://script.google.com/macros/s/AKfycbz5IOIjSV8gccr8VrWVsAr7zGxpL40y66E2vqXOxJqqf8luBe_RFgoKAPlMMxwgZDWftA/exec',
+      'https://script.google.com/macros/s/AKfycbytIcbrZicNcOnYxfNXEwfdPURT-c5jjS3OdaFBXynXZOxcc9fOX4Ynf-WhNFrShV6aHg/exec',
+      'https://script.google.com/macros/s/AKfycbx5pv8eaXuJDcXhMOuGmiQVIH2gcw_dtnCEF4760hdWkiQhugruxtHLzJyfA1asFW2VxQ/exec'
+    ];
+    if (!saved || oldDeployments.indexOf(saved) !== -1) {
+      localStorage.removeItem(LS_API_URL);
+      return DEFAULT_API_URL;
+    }
+    return saved;
+  }
 
   function fmtMoney(n){
     var v = Number(n); if (!isFinite(v)) v = 0;
@@ -994,3 +1006,4 @@
 </script>
 </body>
 </html>
+
