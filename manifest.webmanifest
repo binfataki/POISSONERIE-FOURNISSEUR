@@ -1,0 +1,32 @@
+{
+  "name": "Poissonnerie de l'Est — Espace fournisseur",
+  "short_name": "PDE Fournisseur",
+  "description": "Consultez vos dépôts, paiements et reçus auprès de Poissonnerie de l'Est.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5EFE0",
+  "theme_color": "#0B2A4A",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
